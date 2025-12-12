@@ -100,11 +100,8 @@ export function HeroForm() {
             Vagas limitadas
           </span>
           <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-2">
-            Comece seu teste grátis
+            Preencha o Formulário e Tenha o Teste Grátis
           </h2>
-          <p className="text-muted-foreground text-sm">
-            Preencha o formulário para começar
-          </p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

@@ -49,8 +49,8 @@ const Index = () => {
         </div>
       </section>
 
-      <LogoCarousel />
       <Features />
+      <LogoCarousel />
       <SystemShowcase />
       <Testimonials />
       <CTA />
