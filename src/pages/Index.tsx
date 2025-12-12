@@ -7,9 +7,9 @@ import { Header } from "@/components/Header";
 import { HeroForm } from "@/components/HeroForm";
 import { Features } from "@/components/Features";
 import { SystemShowcase } from "@/components/SystemShowcase";
+import { Testimonials } from "@/components/Testimonials";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
-
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -50,6 +50,7 @@ const Index = () => {
 
       <Features />
       <SystemShowcase />
+      <Testimonials />
       <CTA />
       <Footer />
     </div>
