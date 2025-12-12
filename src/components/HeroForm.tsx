@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/select";
 import { CheckCircle2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const tiposEstabelecimento = [
   "Restaurante",
@@ -47,18 +48,47 @@ const interessePrincipal = [
 
 export function HeroForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [tipoEstabelecimento, setTipoEstabelecimento] = useState("");
+  const [faturamento, setFaturamento] = useState("");
+  const [interesse, setInteresse] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    const formData = new FormData(e.currentTarget);
     
-    setTimeout(() => {
-      setIsSubmitting(false);
+    const { error } = await supabase.from("leads").insert({
+      nome: formData.get("nome") as string,
+      email: formData.get("email") as string,
+      telefone: formData.get("telefone") as string,
+      nome_restaurante: formData.get("restaurante") as string,
+      tipo_estabelecimento: tipoEstabelecimento,
+      faturamento_mensal: faturamento,
+      interesse_principal: interesse,
+    });
+
+    setIsSubmitting(false);
+
+    if (error) {
       toast({
-        title: "Solicitação enviada!",
-        description: "Em breve entraremos em contato para iniciar seu teste grátis.",
+        title: "Erro ao enviar",
+        description: "Por favor, tente novamente.",
+        variant: "destructive",
       });
-    }, 1000);
+      return;
+    }
+
+    toast({
+      title: "Solicitação enviada!",
+      description: "Em breve entraremos em contato para iniciar seu teste grátis.",
+    });
+
+    // Reset form
+    e.currentTarget.reset();
+    setTipoEstabelecimento("");
+    setFaturamento("");
+    setInteresse("");
   };
 
   return (
@@ -82,6 +112,7 @@ export function HeroForm() {
             <Label htmlFor="nome">Nome *</Label>
             <Input
               id="nome"
+              name="nome"
               placeholder="Seu nome completo"
               required
               className="bg-background"
@@ -92,6 +123,7 @@ export function HeroForm() {
             <Label htmlFor="email">E-mail *</Label>
             <Input
               id="email"
+              name="email"
               type="email"
               placeholder="seu@email.com"
               required
@@ -103,6 +135,7 @@ export function HeroForm() {
             <Label htmlFor="telefone">Telefone para contato *</Label>
             <Input
               id="telefone"
+              name="telefone"
               placeholder="(XX) XXXXX-XXXX"
               required
               className="bg-background"
@@ -113,6 +146,7 @@ export function HeroForm() {
             <Label htmlFor="restaurante">Nome do restaurante *</Label>
             <Input
               id="restaurante"
+              name="restaurante"
               placeholder="Nome do seu estabelecimento"
               required
               className="bg-background"
@@ -121,7 +155,7 @@ export function HeroForm() {
 
           <div className="space-y-2">
             <Label>Tipo de Estabelecimento *</Label>
-            <Select required>
+            <Select value={tipoEstabelecimento} onValueChange={setTipoEstabelecimento} required>
               <SelectTrigger className="bg-background">
                 <SelectValue placeholder="Selecione o tipo" />
               </SelectTrigger>
@@ -137,7 +171,7 @@ export function HeroForm() {
 
           <div className="space-y-2">
             <Label>Faturamento Mensal *</Label>
-            <Select required>
+            <Select value={faturamento} onValueChange={setFaturamento} required>
               <SelectTrigger className="bg-background">
                 <SelectValue placeholder="Selecione o faturamento mensal" />
               </SelectTrigger>
@@ -153,14 +187,14 @@ export function HeroForm() {
 
           <div className="space-y-2">
             <Label>Principal interesse nos produtos *</Label>
-            <Select required>
+            <Select value={interesse} onValueChange={setInteresse} required>
               <SelectTrigger className="bg-background">
                 <SelectValue placeholder="Selecione seu principal interesse" />
               </SelectTrigger>
               <SelectContent className="bg-popover">
-                {interessePrincipal.map((interesse) => (
-                  <SelectItem key={interesse} value={interesse}>
-                    {interesse}
+                {interessePrincipal.map((int) => (
+                  <SelectItem key={int} value={int}>
+                    {int}
                   </SelectItem>
                 ))}
               </SelectContent>
