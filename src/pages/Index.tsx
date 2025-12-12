@@ -6,6 +6,7 @@ import "@fontsource/sora/700.css";
 import { Header } from "@/components/Header";
 import { HeroForm } from "@/components/HeroForm";
 import { Features } from "@/components/Features";
+import { SystemShowcase } from "@/components/SystemShowcase";
 import { CTA } from "@/components/CTA";
 import { Footer } from "@/components/Footer";
 
@@ -48,6 +49,7 @@ const Index = () => {
       </section>
 
       <Features />
+      <SystemShowcase />
       <CTA />
       <Footer />
     </div>
