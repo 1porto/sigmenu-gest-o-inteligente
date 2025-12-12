@@ -5,6 +5,7 @@ import "@fontsource/sora/700.css";
 
 import { Header } from "@/components/Header";
 import { HeroForm } from "@/components/HeroForm";
+import { LogoCarousel } from "@/components/LogoCarousel";
 import { Features } from "@/components/Features";
 import { SystemShowcase } from "@/components/SystemShowcase";
 import { Testimonials } from "@/components/Testimonials";
@@ -48,6 +49,7 @@ const Index = () => {
         </div>
       </section>
 
+      <LogoCarousel />
       <Features />
       <SystemShowcase />
       <Testimonials />
