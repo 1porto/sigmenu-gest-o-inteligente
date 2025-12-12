@@ -14,7 +14,42 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      leads: {
+        Row: {
+          created_at: string
+          email: string
+          faturamento_mensal: string | null
+          id: string
+          interesse_principal: string | null
+          nome: string
+          nome_restaurante: string | null
+          telefone: string | null
+          tipo_estabelecimento: string | null
+        }
+        Insert: {
+          created_at?: string
+          email: string
+          faturamento_mensal?: string | null
+          id?: string
+          interesse_principal?: string | null
+          nome: string
+          nome_restaurante?: string | null
+          telefone?: string | null
+          tipo_estabelecimento?: string | null
+        }
+        Update: {
+          created_at?: string
+          email?: string
+          faturamento_mensal?: string | null
+          id?: string
+          interesse_principal?: string | null
+          nome?: string
+          nome_restaurante?: string | null
+          telefone?: string | null
+          tipo_estabelecimento?: string | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
