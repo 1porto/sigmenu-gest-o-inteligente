@@ -104,7 +104,7 @@ export const SystemShowcase = () => {
               <img
                 src={currentScreen.image}
                 alt={currentScreen.title}
-                className={`transition-all duration-500 ${
+                className={`transition-opacity duration-150 ${
                   currentScreen.type === "mobile" 
                     ? "max-h-[500px] rounded-lg shadow-lg" 
                     : "w-full"
