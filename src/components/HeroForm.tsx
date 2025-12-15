@@ -13,21 +13,6 @@ import { CheckCircle2 } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 
-const tiposEstabelecimento = [
-  "Restaurante",
-  "Bar",
-  "Hamburgueria",
-  "Pizzaria",
-  "Comida Japonesa",
-  "Buffet por KG",
-  "Beach Club",
-  "Cafeteria",
-  "Restaurante de Hotel",
-  "Padaria/Doceria",
-  "Franquia/Multi lojas",
-  "Outro Ramo",
-];
-
 const faturamentoMensal = [
   "Estou Abrindo",
   "Até 40 mil",
@@ -37,20 +22,10 @@ const faturamentoMensal = [
   "Acima de 500 mil",
 ];
 
-const interessePrincipal = [
-  "PDV (Caixa e Vendas)",
-  "Autoatendimento",
-  "Sistema de Reservas e Filas",
-  "Delivery Integrado",
-  "Relatórios Detalhados",
-  "Sistema Completo",
-];
 
 export function HeroForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [tipoEstabelecimento, setTipoEstabelecimento] = useState("");
   const [faturamento, setFaturamento] = useState("");
-  const [interesse, setInteresse] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -63,9 +38,7 @@ export function HeroForm() {
       email: formData.get("email") as string,
       telefone: formData.get("telefone") as string,
       nome_restaurante: formData.get("restaurante") as string,
-      tipo_estabelecimento: tipoEstabelecimento,
       faturamento_mensal: faturamento,
-      interesse_principal: interesse,
     });
 
     setIsSubmitting(false);
@@ -86,9 +59,7 @@ export function HeroForm() {
 
     // Reset form
     e.currentTarget.reset();
-    setTipoEstabelecimento("");
     setFaturamento("");
-    setInteresse("");
   };
 
   return (
@@ -151,22 +122,6 @@ export function HeroForm() {
           </div>
 
           <div className="space-y-2">
-            <Label>Tipo de Estabelecimento *</Label>
-            <Select value={tipoEstabelecimento} onValueChange={setTipoEstabelecimento} required>
-              <SelectTrigger className="bg-background">
-                <SelectValue placeholder="Selecione o tipo" />
-              </SelectTrigger>
-              <SelectContent className="bg-popover">
-                {tiposEstabelecimento.map((tipo) => (
-                  <SelectItem key={tipo} value={tipo}>
-                    {tipo}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
             <Label>Faturamento Mensal *</Label>
             <Select value={faturamento} onValueChange={setFaturamento} required>
               <SelectTrigger className="bg-background">
@@ -176,22 +131,6 @@ export function HeroForm() {
                 {faturamentoMensal.map((faixa) => (
                   <SelectItem key={faixa} value={faixa}>
                     {faixa}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-
-          <div className="space-y-2">
-            <Label>Principal interesse nos produtos *</Label>
-            <Select value={interesse} onValueChange={setInteresse} required>
-              <SelectTrigger className="bg-background">
-                <SelectValue placeholder="Selecione seu principal interesse" />
-              </SelectTrigger>
-              <SelectContent className="bg-popover">
-                {interessePrincipal.map((int) => (
-                  <SelectItem key={int} value={int}>
-                    {int}
                   </SelectItem>
                 ))}
               </SelectContent>
