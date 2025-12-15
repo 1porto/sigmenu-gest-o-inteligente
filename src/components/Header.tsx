@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import logo from "@/assets/logo.png";
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -10,18 +11,29 @@ export function Header() {
     setMobileMenuOpen(false);
   };
 
+  const scrollToFuncionalidades = () => {
+    const element = document.getElementById('funcionalidades');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+    setMobileMenuOpen(false);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center gap-2">
-  <img src={logo} alt="SIGMENU" className="h-10" />
-</div>
+            <img src={logo} alt="SIGMENU" className="h-10" />
+          </div>
 
           <nav className="hidden md:flex items-center gap-8">
-            <a href="#funcionalidades" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">
+            <button 
+              onClick={scrollToFuncionalidades} 
+              className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            >
               Funcionalidades
-            </a>
+            </button>
             <Button onClick={scrollToForm} className="gradient-primary hover:opacity-90">
               Teste Grátis
             </Button>
@@ -38,13 +50,12 @@ export function Header() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-border/50">
             <nav className="flex flex-col gap-4">
-              <a 
-                href="#funcionalidades" 
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
+              <button 
+                onClick={scrollToFuncionalidades}
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors text-left"
               >
                 Funcionalidades
-              </a>
+              </button>
               <Button onClick={scrollToForm} className="gradient-primary hover:opacity-90 w-full">
                 Teste Grátis
               </Button>
