@@ -22,10 +22,26 @@ const faturamentoMensal = [
   "Acima de 500 mil",
 ];
 
+function formatPhone(value: string) {
+  const numbers = value.replace(/\D/g, "");
+  if (numbers.length <= 2) {
+    return numbers;
+  }
+  if (numbers.length <= 7) {
+    return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
+  }
+  return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+}
 
 export function HeroForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [faturamento, setFaturamento] = useState("");
+  const [telefone, setTelefone] = useState("");
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhone(e.target.value);
+    setTelefone(formatted);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +52,7 @@ export function HeroForm() {
     const { error } = await supabase.from("leads").insert({
       nome: formData.get("nome") as string,
       email: formData.get("email") as string,
-      telefone: formData.get("telefone") as string,
+      telefone: telefone,
       nome_restaurante: formData.get("restaurante") as string,
       faturamento_mensal: faturamento,
     });
@@ -60,6 +76,7 @@ export function HeroForm() {
     // Reset form
     e.currentTarget.reset();
     setFaturamento("");
+    setTelefone("");
   };
 
   return (
@@ -105,6 +122,8 @@ export function HeroForm() {
               id="telefone"
               name="telefone"
               placeholder="(XX) XXXXX-XXXX"
+              value={telefone}
+              onChange={handlePhoneChange}
               required
               className="bg-background"
             />
