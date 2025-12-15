@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import "@fontsource/sora/400.css";
 import "@fontsource/sora/500.css";
 import "@fontsource/sora/600.css";
@@ -5,12 +6,15 @@ import "@fontsource/sora/700.css";
 
 import { Header } from "@/components/Header";
 import { HeroForm } from "@/components/HeroForm";
-import { LogoCarousel } from "@/components/LogoCarousel";
 import { Features } from "@/components/Features";
-import { SystemShowcase } from "@/components/SystemShowcase";
-import { Testimonials } from "@/components/Testimonials";
-import { CTA } from "@/components/CTA";
-import { Footer } from "@/components/Footer";
+
+// Lazy load components below the fold
+const LogoCarousel = lazy(() => import("@/components/LogoCarousel").then(m => ({ default: m.LogoCarousel })));
+const SystemShowcase = lazy(() => import("@/components/SystemShowcase").then(m => ({ default: m.SystemShowcase })));
+const Testimonials = lazy(() => import("@/components/Testimonials").then(m => ({ default: m.Testimonials })));
+const CTA = lazy(() => import("@/components/CTA").then(m => ({ default: m.CTA })));
+const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
+
 const Index = () => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -50,11 +54,13 @@ const Index = () => {
       </section>
 
       <Features />
-      <LogoCarousel />
-      <SystemShowcase />
-      <Testimonials />
-      <CTA />
-      <Footer />
+      <Suspense fallback={<div className="h-48" />}>
+        <LogoCarousel />
+        <SystemShowcase />
+        <Testimonials />
+        <CTA />
+        <Footer />
+      </Suspense>
     </div>
   );
 };

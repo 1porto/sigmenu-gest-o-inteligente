@@ -66,6 +66,8 @@ export const LogoCarousel = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="max-w-full max-h-full object-contain rounded-lg"
                 />
               </div>
@@ -81,6 +83,8 @@ export const LogoCarousel = () => {
                 <img
                   src={logo.src}
                   alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
                   className="max-w-full max-h-full object-contain rounded-lg"
                 />
               </div>
