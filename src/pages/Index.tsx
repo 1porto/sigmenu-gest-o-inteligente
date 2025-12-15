@@ -10,6 +10,7 @@ import { Features } from "@/components/Features";
 
 // Lazy load components below the fold
 const LogoCarousel = lazy(() => import("@/components/LogoCarousel").then(m => ({ default: m.LogoCarousel })));
+const WhyUs = lazy(() => import("@/components/WhyUs").then(m => ({ default: m.WhyUs })));
 const SystemShowcase = lazy(() => import("@/components/SystemShowcase").then(m => ({ default: m.SystemShowcase })));
 const Testimonials = lazy(() => import("@/components/Testimonials").then(m => ({ default: m.Testimonials })));
 const CTA = lazy(() => import("@/components/CTA").then(m => ({ default: m.CTA })));
@@ -56,6 +57,7 @@ const Index = () => {
       <Features />
       <Suspense fallback={<div className="h-48" />}>
         <LogoCarousel />
+        <WhyUs />
         <SystemShowcase />
         <Testimonials />
         <CTA />
