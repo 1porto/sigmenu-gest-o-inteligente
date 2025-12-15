@@ -104,6 +104,8 @@ export const SystemShowcase = () => {
               <img
                 src={currentScreen.image}
                 alt={currentScreen.title}
+                loading="lazy"
+                decoding="async"
                 className={`transition-opacity duration-150 ${
                   currentScreen.type === "mobile" 
                     ? "max-h-[500px] rounded-lg shadow-lg" 
