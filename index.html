@@ -34,7 +34,10 @@
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '592124266510598');
-    fbq('track', 'PageView');
+    // Só dispara PageView se NÃO estiver na página /admin
+    if (window.location.pathname !== '/admin') {
+      fbq('track', 'PageView');
+    }
     </script>
     <noscript><img height="1" width="1" style="display:none"
     src="https://www.facebook.com/tr?id=592124266510598&ev=PageView&noscript=1"
