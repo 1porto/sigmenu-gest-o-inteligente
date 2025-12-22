@@ -68,11 +68,6 @@ export function HeroForm() {
       return;
     }
 
-    // Dispara evento Lead do Meta Pixel APENAS após sucesso no banco
-    if (typeof window !== 'undefined' && (window as any).fbq) {
-      (window as any).fbq('track', 'Lead');
-    }
-
     toast({
       title: "Solicitação enviada!",
       description: "Em breve entraremos em contato para iniciar seu teste grátis.",
