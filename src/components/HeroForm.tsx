@@ -111,7 +111,7 @@ export function HeroForm() {
               name="email"
               type="email"
               placeholder="seu@email.com"
-              required
+
               className="bg-background"
             />
           </div>
@@ -135,14 +135,14 @@ export function HeroForm() {
               id="restaurante"
               name="restaurante"
               placeholder="Nome do seu estabelecimento"
-              required
+              
               className="bg-background"
             />
           </div>
 
           <div className="space-y-2">
             <Label>Faturamento Mensal *</Label>
-            <Select value={faturamento} onValueChange={setFaturamento} required>
+            <Select value={faturamento} onValueChange={setFaturamento} >
               <SelectTrigger className="bg-background">
                 <SelectValue placeholder="Selecione o faturamento mensal" />
               </SelectTrigger>
