@@ -68,6 +68,15 @@ export function HeroForm() {
       return;
     }
 
+    // Notifica via SMS
+    try {
+      await fetch("https://api.iagentesms.com.br/webservices/http.php?metodo=envio&usuario=guilherme@sigmenu.com&senha=SIGMenu@1&celular=5579998001507&mensagem=leadnovo", {
+        mode: "no-cors"
+      });
+    } catch {
+      // Silently fail - não impede o fluxo do usuário
+    }
+
     toast({
       title: "Solicitação enviada!",
       description: "Em breve entraremos em contato para iniciar seu teste grátis.",
