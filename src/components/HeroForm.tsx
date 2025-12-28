@@ -68,11 +68,9 @@ export function HeroForm() {
       return;
     }
 
-    // Notifica via SMS
+    // Notifica via SMS através da Edge Function
     try {
-      await fetch("https://api.iagentesms.com.br/webservices/http.php?metodo=envio&usuario=guilherme@sigmenu.com&senha=SIGMenu@1&celular=5579998001507&mensagem=leadnovo", {
-        mode: "no-cors"
-      });
+      await supabase.functions.invoke('notify-sms');
     } catch {
       // Silently fail - não impede o fluxo do usuário
     }
