@@ -30,7 +30,8 @@ function formatPhone(value: string) {
   if (numbers.length <= 7) {
     return `(${numbers.slice(0, 2)}) ${numbers.slice(2)}`;
   }
-  return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 11)}`;
+  // Permite até 15 dígitos após o hífen para acomodar DDI + DDD + número
+  return `(${numbers.slice(0, 2)}) ${numbers.slice(2, 7)}-${numbers.slice(7, 22)}`;
 }
 
 export function HeroForm() {
@@ -128,7 +129,7 @@ export function HeroForm() {
             <Input
               id="telefone"
               name="telefone"
-              placeholder="(XX) XXXXX-XXXX"
+              placeholder="(XX) XXXXX-XXXXXXXXXXXX"
               value={telefone}
               onChange={handlePhoneChange}
               required
