@@ -129,7 +129,7 @@ export function HeroForm() {
             <Input
               id="telefone"
               name="telefone"
-              placeholder="(XX) XXXXX-XXXXXXXXXXXX"
+              placeholder="(DDD) 9999-9999"
               value={telefone}
               onChange={handlePhoneChange}
               required
