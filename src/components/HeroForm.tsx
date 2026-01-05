@@ -169,7 +169,7 @@ export function HeroForm() {
             disabled={isSubmitting}
             className="w-full h-12 text-base font-semibold gradient-primary hover:opacity-90 transition-opacity"
           >
-            {isSubmitting ? "Enviando..." : "Iniciar Teste Grátis de 14 dias"}
+            {isSubmitting ? "Enviando..." : "Iniciar Teste Grátis de 7 dias"}
           </Button>
 
           <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground pt-2">
@@ -179,7 +179,7 @@ export function HeroForm() {
             </span>
             <span className="flex items-center gap-1">
               <CheckCircle2 className="w-4 h-4 text-accent" />
-              14 dias grátis
+              7 dias grátis
             </span>
           </div>
         </form>
