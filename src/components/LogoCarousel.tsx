@@ -49,20 +49,18 @@ export const LogoCarousel = () => {
         </h2>
       </div>
       
-      <div className="relative">
-        {/* Gradient overlays for smooth fade effect */}
+      {/* Row 1 - Moving Left */}
+      <div className="relative mb-4">
         <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
         <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
         
-        {/* Scrolling container */}
         <div className="flex animate-marquee">
-          {/* First set of logos */}
           {logos.map((logo, index) => (
             <div
-              key={`first-${index}`}
-              className="flex-shrink-0 mx-4 md:mx-6"
+              key={`row1-first-${index}`}
+              className="flex-shrink-0 mx-3 md:mx-5"
             >
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-background rounded-xl shadow-sm flex items-center justify-center p-3 md:p-4 transition-transform hover:scale-105">
+              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
                 <img
                   src={logo.src}
                   alt={logo.alt}
@@ -73,13 +71,53 @@ export const LogoCarousel = () => {
               </div>
             </div>
           ))}
-          {/* Duplicate set for seamless loop */}
           {logos.map((logo, index) => (
             <div
-              key={`second-${index}`}
-              className="flex-shrink-0 mx-4 md:mx-6"
+              key={`row1-second-${index}`}
+              className="flex-shrink-0 mx-3 md:mx-5"
             >
-              <div className="w-24 h-24 md:w-32 md:h-32 bg-background rounded-xl shadow-sm flex items-center justify-center p-3 md:p-4 transition-transform hover:scale-105">
+              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-w-full max-h-full object-contain rounded-lg"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Row 2 - Moving Right */}
+      <div className="relative">
+        <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        
+        <div className="flex animate-marquee-reverse">
+          {logos.slice().reverse().map((logo, index) => (
+            <div
+              key={`row2-first-${index}`}
+              className="flex-shrink-0 mx-3 md:mx-5"
+            >
+              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
+                <img
+                  src={logo.src}
+                  alt={logo.alt}
+                  loading="lazy"
+                  decoding="async"
+                  className="max-w-full max-h-full object-contain rounded-lg"
+                />
+              </div>
+            </div>
+          ))}
+          {logos.slice().reverse().map((logo, index) => (
+            <div
+              key={`row2-second-${index}`}
+              className="flex-shrink-0 mx-3 md:mx-5"
+            >
+              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
                 <img
                   src={logo.src}
                   alt={logo.alt}
