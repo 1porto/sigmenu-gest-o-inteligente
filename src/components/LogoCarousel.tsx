@@ -60,7 +60,7 @@ export const LogoCarousel = () => {
               key={`row1-first-${index}`}
               className="flex-shrink-0 mx-3 md:mx-5"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
                 <img
                   src={logo.src}
                   alt={logo.alt}
@@ -76,7 +76,7 @@ export const LogoCarousel = () => {
               key={`row1-second-${index}`}
               className="flex-shrink-0 mx-3 md:mx-5"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
                 <img
                   src={logo.src}
                   alt={logo.alt}
@@ -101,7 +101,7 @@ export const LogoCarousel = () => {
               key={`row2-first-${index}`}
               className="flex-shrink-0 mx-3 md:mx-5"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
                 <img
                   src={logo.src}
                   alt={logo.alt}
@@ -117,7 +117,7 @@ export const LogoCarousel = () => {
               key={`row2-second-${index}`}
               className="flex-shrink-0 mx-3 md:mx-5"
             >
-              <div className="w-20 h-20 md:w-28 md:h-28 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
+              <div className="w-16 h-16 md:w-24 md:h-24 bg-background rounded-xl shadow-sm flex items-center justify-center p-2 md:p-3 transition-transform hover:scale-105">
                 <img
                   src={logo.src}
                   alt={logo.alt}
