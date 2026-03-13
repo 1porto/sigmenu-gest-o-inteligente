@@ -36,6 +36,7 @@ function formatPhone(value: string) {
 
 export function HeroForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [faturamento, setFaturamento] = useState("");
   const [telefone, setTelefone] = useState("");
 
