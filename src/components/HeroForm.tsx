@@ -77,15 +77,7 @@ export function HeroForm() {
       // Silently fail - não impede o fluxo do usuário
     }
 
-    toast({
-      title: "Solicitação enviada!",
-      description: "Em breve entraremos em contato para iniciar seu teste grátis.",
-    });
-
-    // Reset form
-    e.currentTarget.reset();
-    setFaturamento("");
-    setTelefone("");
+    setIsSubmitted(true);
   };
 
   return (
