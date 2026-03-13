@@ -80,6 +80,22 @@ export function HeroForm() {
     setIsSubmitted(true);
   };
 
+  if (isSubmitted) {
+    return (
+      <div className="w-full max-w-md mx-auto">
+        <div className="gradient-card rounded-2xl p-8 shadow-xl border border-border/50 backdrop-blur-sm text-center flex flex-col items-center justify-center min-h-[320px]">
+          <CheckCircle2 className="w-16 h-16 text-accent mb-6" />
+          <h2 className="text-2xl md:text-3xl font-bold text-gradient mb-3">
+            Obrigado!
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            Em breve entraremos em contato.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full max-w-md mx-auto">
       <div className="gradient-card rounded-2xl p-8 shadow-xl border border-border/50 backdrop-blur-sm">
