@@ -59,9 +59,8 @@ export function HeroForm() {
       faturamento_mensal: faturamento,
     });
 
-    setIsSubmitting(false);
-
     if (error) {
+      setIsSubmitting(false);
       toast({
         title: "Erro ao enviar",
         description: "Por favor, tente novamente.",
@@ -70,10 +69,11 @@ export function HeroForm() {
       return;
     }
 
+    // Mostra sucesso imediatamente
+    setIsSubmitted(true);
+
     // Notifica via SMS sem aguardar resposta
     supabase.functions.invoke('notify-sms').catch(() => {});
-
-    setIsSubmitted(true);
   };
 
   if (isSubmitted) {
