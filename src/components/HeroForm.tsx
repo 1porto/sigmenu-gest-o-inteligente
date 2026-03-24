@@ -70,12 +70,8 @@ export function HeroForm() {
       return;
     }
 
-    // Notifica via SMS através da Edge Function
-    try {
-      await supabase.functions.invoke('notify-sms');
-    } catch {
-      // Silently fail - não impede o fluxo do usuário
-    }
+    // Notifica via SMS sem aguardar resposta
+    supabase.functions.invoke('notify-sms').catch(() => {});
 
     setIsSubmitted(true);
   };
